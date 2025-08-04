@@ -40,5 +40,5 @@ jobs:
           context: .
           push: true
           tags: |
-                  ashdockertest/web-app # Replace with your Docker Hub username and repo name
-                  ashdockertest/web-app:${{ github.sha }} # Tag with commit SHA for versioning
+                  ashdockertest/web-app
+                  ashdockertest/web-app
