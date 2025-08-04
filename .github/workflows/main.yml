@@ -16,24 +16,23 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: '18' 
 
       - name: Install dependencies
-        run: npm install # Install Node.js package dependencies
+        run: npm install 
 
       - name: Run tests (if you have them)
-        # You would add your test command here, e.g., 'npm test'
-        # For this simple app, we can skip it or add a placeholder
+
         run: echo "No tests configured for this simple app. Add 'npm test' if you have tests."
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3 # Required for building Docker images efficiently
+        uses: docker/setup-buildx-action@v3 
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }} # GitHub Secret for Docker Hub username
-          password: ${{ secrets.DOCKER_TOKEN }}    # GitHub Secret for Docker Hub Access Token/Password
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}    
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -41,5 +40,5 @@ jobs:
           context: .
           push: true
           tags: |
-                  ashdockertest/node-web-app:latest # Replace with your Docker Hub username and repo name
-                  ashdockertest/node-web-app:${{ github.sha }} # Tag with commit SHA for versioning
+                  ashdockertest/web-app # Replace with your Docker Hub username and repo name
+                  ashdockertest/web-app:${{ github.sha }} # Tag with commit SHA for versioning
